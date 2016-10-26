@@ -16,9 +16,8 @@ if not os.path.isfile(file_name):
 
 # read in the data to an rdd
 
-logFile = "data/2015_07_22_mktplace_shop_web_log_sample.log"
 sc = SparkContext("local", "Paytm Challenge")
-logData = sc.textFile(logFile).cache()
+logData = sc.textFile(file_name).cache()
 
 # get desired rdd from logData
 
@@ -85,6 +84,7 @@ def session_duration_fcn(x):
     return x
 
 rdd_durations_and_url_counts = rdd_times_and_urls.map(session_duration_fcn)
+rdd_durations_and_url_counts.cache()
 
 # find average session time
 
