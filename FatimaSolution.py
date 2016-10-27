@@ -55,7 +55,7 @@ rdd_by_session = rdd_relevant_ordered.mapValues(add_session)\
 
 def agg_comb_fcn(x, y):
     x['max_time'] = max(x['max_time'], y['max_time'])
-    x['min_time'] = min(x['min_time'], y['max_time'])
+    x['min_time'] = min(x['min_time'], y['min_time'])
     x['url_set'] = x['url_set'].union(y['url_set'])
     return x
 
